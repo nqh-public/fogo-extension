@@ -1,4 +1,4 @@
-# Selecto Extension - Quick Start
+# Fogó Extension - Quick Start
 
 ## Installation (Chrome)
 
@@ -6,7 +6,7 @@
 2. Navigate to `chrome://extensions/`
 3. Enable "Developer mode" (toggle top-right)
 4. Click "Load unpacked"
-5. Select `/Users/huy/CODES/nqh/apps/selecto-extension/`
+5. Select `/path/to/fogo-extension/`
 
 ## Features
 
@@ -69,8 +69,8 @@ Markdown now includes at bottom:
 **All activation methods disabled**:
 
 - ❌ Toolbar click (toggles ON/OFF instead)
-- ❌ Keyboard shortcut (`Cmd+Shift+E`) → Shows notification "Selecto Disabled"
-- ❌ Context menu → Shows notification "Selecto Disabled"
+- ❌ Keyboard shortcut (`Cmd+Shift+E`) → Shows notification "Fogó Disabled"
+- ❌ Context menu → Shows notification "Fogó Disabled"
 
 **To re-enable**: Click toolbar icon again → Badge changes to green "ON"
 
@@ -96,7 +96,7 @@ apps/selecto-extension/
 - `activeTab` - Access current tab DOM
 - `contextMenus` - Add right-click menu
 - `storage` - Persist ON/OFF state
-- `notifications` - Show "Selecto Disabled" messages
+- `notifications` - Show "Fogó Disabled" messages
 
 ## Troubleshooting
 

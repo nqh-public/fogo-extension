@@ -1,4 +1,4 @@
-# Selecto Browser Extension
+# Fogó Browser Extension
 
 Browser extension for picking DOM elements from any webpage and sending them to VSCode for AI-assisted development.
 
@@ -25,11 +25,11 @@ Browser extension for picking DOM elements from any webpage and sending them to 
    - Open `chrome://extensions/` (or `edge://extensions/`)
    - Enable "Developer mode" (toggle in top-right)
    - Click "Load unpacked"
-   - Select `/Users/huy/CODES/nqh/apps/selecto-extension/`
+   - Select `/path/to/fogo-extension/`
 
 3. **Verify installation**:
    - Extension icon appears in toolbar (red crosshair)
-   - Name: "Selecto DOM Picker"
+   - Name: "Fogó DOM Picker"
 
 ### Firefox (Temporary Add-on)
 
@@ -50,27 +50,27 @@ Browser extension for picking DOM elements from any webpage and sending them to 
    ```bash
    cd apps/selecto-extension/dist/safari
    xcrun safari-web-extension-converter \
-     /Users/huy/CODES/nqh/apps/selecto-extension \
-     --app-name "Selecto Picker" \
+     /path/to/fogo-extension
+     --app-name "Fogó Picker" \
      --bundle-identifier "com.nqh.selecto"
    ```
 
 2. **Open in Xcode**:
-   - Open `Selecto Picker.xcodeproj`
+   - Open `Fogó Picker.xcodeproj`
    - Build and run (⌘+R)
 
 3. **Enable in Safari**:
    - Safari → Preferences → Extensions
-   - Enable "Selecto Picker"
+   - Enable "Fogó Picker"
 
 ## Usage
 
 ### Prerequisites
 
 1. **VSCode extension must be running**:
-   - The Selecto VSCode extension starts automatically
+   - The Fogó VSCode extension starts automatically
    - Server runs on `localhost:9876` (or ports 9877-9880 as fallback)
-   - Check VSCode Output panel → "Selecto" for status
+   - Check VSCode Output panel → "Fogó" for status
 
 ### Activation Methods
 
@@ -88,7 +88,7 @@ Browser extension for picking DOM elements from any webpage and sending them to 
 **Method 3: Context Menu**
 
 - Right-click anywhere on page
-- Select "Pick Element with Selecto"
+- Select "Pick Element with Fogó"
 
 **Method 4: ESC Key**
 
@@ -167,7 +167,7 @@ Submit
 
 **Solutions**:
 
-1. Check VSCode Output → "Selecto" channel for server status
+1. Check VSCode Output → "Fogó" channel for server status
 2. Restart VSCode extension:
    - VSCode Command Palette (`Cmd/Ctrl+Shift+P`)
    - Run: "Developer: Reload Window"
@@ -240,7 +240,7 @@ apps/selecto-extension/
 **Content Script**:
 
 - Regular browser DevTools (`F12`)
-- Console shows `[Selecto]` prefixed messages
+- Console shows `[Fogó]` prefixed messages
 
 ## Technical Details
 

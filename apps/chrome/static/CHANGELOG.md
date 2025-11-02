@@ -1,6 +1,6 @@
 # Changelog
 
-All notable changes to the Selecto Browser Extension.
+All notable changes to the Fogó Browser Extension.
 
 ## [0.4.0] - 2025-11-01
 
@@ -10,7 +10,7 @@ All notable changes to the Selecto Browser Extension.
 - **Toolbar badge toggle** - Click toolbar icon to enable/disable extension (ON/OFF badge persists)
 - **Page metadata in output** - Markdown now includes page title, URL, and timestamp at bottom
 - **Keyboard shortcuts in toast** - ESC to close, Cmd/Ctrl+C to copy
-- **Extension state notifications** - Shows "Selecto Disabled" when trying to use disabled extension
+- **Extension state notifications** - Shows "Fogó Disabled" when trying to use disabled extension
 
 ### Changed
 
@@ -38,7 +38,7 @@ All notable changes to the Selecto Browser Extension.
 - Browser extension architecture (Chrome/Firefox/Safari)
 - Toolbar icon activation
 - Keyboard shortcut (Cmd/Shift+E)
-- Context menu "Pick Element with Selecto"
+- Context menu "Pick Element with Fogó"
 - Toggle on/off functionality
 - Message passing (background ↔ content scripts)
 - HTTP communication with VSCode extension (localhost:9876-9880)
