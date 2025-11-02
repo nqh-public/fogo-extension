@@ -38,7 +38,7 @@
 
   "browser_specific_settings": {
     "gecko": {
-      "id": "fogo@ngoquochuy.com",
+      "id": "{fogo-extension@nqh-public}",
       "data_collection_permissions": "no"
     }
   }

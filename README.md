@@ -1,6 +1,54 @@
 # Fogó Extension
 
-DOM element picker for AI workflows - VSCode + Chrome extensions with shared core.
+**DOM element picker for AI workflows** - Pick any element on a webpage, get perfectly formatted markdown with all technical details.
+
+Available as VSCode extension + Chrome extension, powered by shared TypeScript core.
+
+## Quick Start
+
+### VSCode Extension
+
+1. Install from [VS Marketplace](#) (link TBD)
+2. Open Command Palette (`Cmd+Shift+P`)
+3. Run `Fogó: Start Preview`
+4. Click "Pick Element" button
+5. Hover + click any element
+6. Markdown copied to clipboard!
+
+### Chrome Extension
+
+1. Install from [Chrome Web Store](#) (link TBD)
+2. Navigate to any webpage
+3. Click Fogó icon in toolbar
+4. Hover + click any element
+5. Markdown copied to clipboard!
+
+## Why Fogó?
+
+Perfect for:
+- **AI-assisted development**: Give Claude/ChatGPT precise element context
+- **Bug reports**: Capture exact element state and styles
+- **Documentation**: Generate technical specs from live sites
+- **Design handoff**: Extract computed styles and positioning
+
+**Output Example:**
+```markdown
+## Selected Element: Sign In
+
+**ELEMENT**
+<button class="btn-primary" data-testid="login-btn">Sign In</button>
+
+**PATH**
+`button[data-testid="login-btn"]`
+
+**COMPUTED STYLES**
+| Property | Value |
+|----------|-------|
+| color | rgb(255, 255, 255) |
+| backgroundColor | rgb(37, 99, 235) |
+| fontSize | 16px |
+...
+```
 
 ## Structure
 
@@ -91,33 +139,25 @@ pnpm build      # Creates dist/ folder
 
 ## Development
 
-### Local Development (NQH Monorepo)
-
 ```bash
+# Clone repository
+git clone https://github.com/nqh-public/fogo-extension.git
+cd fogo-extension
+
 # Install dependencies
 pnpm install
 
 # Build VSCode extension
-cd apps/fogo-extension/apps/vscode
-pnpm build
+cd apps/vscode
+pnpm build      # Creates .vsix file
 
 # Build Chrome extension
-cd apps/fogo-extension/apps/chrome
-pnpm build
-```
+cd apps/chrome
+pnpm build      # Creates dist/ folder
 
-### Standalone Development
-
-This subtree syncs to `github.com/nqh-public/fogo-extension` for public distribution.
-
-```bash
-# Clone standalone repo
-git clone https://github.com/nqh-public/fogo-extension.git
-cd fogo-extension
-pnpm install
-
-# Build all
-pnpm build
+# Build all packages
+cd ../..
+pnpm build      # Builds everything
 ```
 
 ## Publishing
@@ -147,19 +187,13 @@ vsce publish
 2. Upload `dist/` to Chrome Web Store
 3. Submit for review
 
-## Git Subtree Sync
+## Contributing
 
-This directory is a git subtree synced between NQH monorepo and standalone repo.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines.
 
-```bash
-# Push changes to standalone repo
-git subtree push --prefix apps/fogo-extension \
-  https://github.com/nqh-public/fogo-extension.git main
+## Security
 
-# Pull changes from standalone repo
-git subtree pull --prefix apps/fogo-extension \
-  https://github.com/nqh-public/fogo-extension.git main --squash
-```
+Report vulnerabilities to fogo@ngoquochuy.com - see [SECURITY.md](SECURITY.md) for details.
 
 ## Architecture
 
