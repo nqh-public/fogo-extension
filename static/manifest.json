@@ -2,7 +2,7 @@
   "manifest_version": 3,
   "name": "Fogó DOM Picker",
   "version": "1.0.0",
-  "description": "Pick DOM elements from any webpage and export as markdown. Standalone tool for web developers.",
+  "description": "Pick DOM elements from any webpage and export as markdown. Zero data collection.",
 
   "permissions": ["activeTab", "contextMenus", "storage", "notifications"],
 
@@ -38,7 +38,8 @@
 
   "browser_specific_settings": {
     "gecko": {
-      "id": "fogo@nqh.dev"
+      "id": "fogo@ngoquochuy.com",
+      "data_collection_permissions": "no"
     }
   }
 }

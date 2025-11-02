@@ -1,9 +1,27 @@
 {
   "name": "fogo-extension",
   "version": "1.0.0",
-  "description": "Fogó - Standalone browser extension for picking DOM elements and exporting as markdown",
+  "description": "Fogó - Browser extension for picking DOM elements and exporting as markdown. Zero data collection.",
   "type": "module",
-  "private": true,
+  "author": "Ngo Quoc Huy <fogo@ngoquochuy.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/nqh-public/fogo-extension.git"
+  },
+  "bugs": {
+    "url": "https://github.com/nqh-public/fogo-extension/issues"
+  },
+  "homepage": "https://github.com/nqh-public/fogo-extension#readme",
+  "keywords": [
+    "browser-extension",
+    "chrome-extension",
+    "firefox-addon",
+    "dom-picker",
+    "markdown",
+    "developer-tools",
+    "web-development"
+  ],
   "scripts": {
     "build": "node build.mjs",
     "watch": "node build.mjs --watch",
