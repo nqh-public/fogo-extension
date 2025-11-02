@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selecto - Element Copied</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      padding: 20px;
+      background: #0f0f0f;
+      color: #fafafa;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .header {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 16px;
+    }
+
+    .icon {
+      width: 32px;
+      height: 32px;
+      background: #ff0000;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+    }
+
+    h1 {
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    .status {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 16px;
+      background: #1a1a1a;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      border: 1px solid #2a2a2a;
+    }
+
+    .status.success {
+      border-color: #10b981;
+      background: #10b98110;
+    }
+
+    .status.error {
+      border-color: #ef4444;
+      background: #ef444410;
+    }
+
+    .status-icon {
+      font-size: 20px;
+    }
+
+    .status-text {
+      flex: 1;
+      font-size: 14px;
+    }
+
+    .markdown-preview {
+      background: #1a1a1a;
+      border: 1px solid #2a2a2a;
+      border-radius: 8px;
+      padding: 16px;
+      margin-bottom: 16px;
+      max-height: 400px;
+      overflow-y: auto;
+      font-family: 'Monaco', 'Courier New', monospace;
+      font-size: 13px;
+      line-height: 1.6;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    .actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px 24px;
+      border-radius: 6px;
+      border: none;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .copy-button {
+      background: #ff0000;
+      color: white;
+    }
+
+    .copy-button:hover {
+      background: #cc0000;
+    }
+
+    .copy-button:active {
+      transform: scale(0.98);
+    }
+
+    .copy-button.copied {
+      background: #10b981;
+    }
+
+    .close-button {
+      background: #2a2a2a;
+      color: #fafafa;
+    }
+
+    .close-button:hover {
+      background: #3a3a3a;
+    }
+
+    .footer {
+      margin-top: 16px;
+      font-size: 12px;
+      color: #888;
+      text-align: center;
+    }
+
+    /* Scrollbar styling */
+    .markdown-preview::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    .markdown-preview::-webkit-scrollbar-track {
+      background: #0f0f0f;
+      border-radius: 4px;
+    }
+
+    .markdown-preview::-webkit-scrollbar-thumb {
+      background: #3a3a3a;
+      border-radius: 4px;
+    }
+
+    .markdown-preview::-webkit-scrollbar-thumb:hover {
+      background: #4a4a4a;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <div class="icon">S</div>
+    <h1>Element Picked</h1>
+  </div>
+
+  <div class="status success" id="status">
+    <span class="status-icon">✓</span>
+    <span class="status-text" id="statusText">Element data copied to clipboard!</span>
+  </div>
+
+  <div class="markdown-preview" id="markdown"></div>
+
+  <div class="actions">
+    <button class="copy-button" id="downloadButton">
+      <span id="downloadText">📥 Download Markdown</span>
+    </button>
+    <button class="close-button" id="closeButton">Close</button>
+  </div>
+
+  <div class="footer">
+    Press <kbd>Esc</kbd> to close • <kbd>Cmd/Ctrl+D</kbd> to download
+  </div>
+
+  <script>
+    const markdownEl = document.getElementById('markdown');
+    const downloadButton = document.getElementById('downloadButton');
+    const downloadText = document.getElementById('downloadText');
+    const closeButton = document.getElementById('closeButton');
+    const statusEl = document.getElementById('status');
+    const statusTextEl = document.getElementById('statusText');
+
+    let markdownContent = '';
+
+    // Receive markdown from background script
+    chrome.runtime.onMessage.addListener(async (message) => {
+      if (message.action === 'showMarkdown') {
+        markdownContent = message.markdown;
+        markdownEl.textContent = markdownContent;
+
+        // Auto-copy to clipboard
+        try {
+          await navigator.clipboard.writeText(markdownContent);
+          statusEl.className = 'status success';
+          statusTextEl.textContent = '✓ Copied to clipboard! Click download to save as .md file';
+        } catch (error) {
+          statusEl.className = 'status error';
+          statusTextEl.textContent = '⚠️ Could not auto-copy. Click download to save as .md file';
+        }
+      }
+    });
+
+    // Download button handler
+    downloadButton.addEventListener('click', () => {
+      const timestamp = new Date().toISOString().replace(/[:.]/g, '-').slice(0, 19);
+      const filename = `element-${timestamp}.md`;
+
+      const blob = new Blob([markdownContent], { type: 'text/markdown' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      a.click();
+      URL.revokeObjectURL(url);
+
+      // Visual feedback
+      downloadButton.classList.add('copied');
+      downloadText.textContent = '✓ Downloaded!';
+
+      setTimeout(() => {
+        downloadButton.classList.remove('copied');
+        downloadText.textContent = '📥 Download Markdown';
+      }, 2000);
+    });
+
+    // Close button handler
+    closeButton.addEventListener('click', () => {
+      window.close();
+    });
+
+    // ESC key handler
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        window.close();
+      } else if ((event.metaKey || event.ctrlKey) && event.key === 'd') {
+        event.preventDefault();
+        downloadButton.click();
+      }
+    });
+
+    // Auto-select text for easy manual copy
+    markdownEl.addEventListener('click', () => {
+      const selection = window.getSelection();
+      const range = document.createRange();
+      range.selectNodeContents(markdownEl);
+      selection.removeAllRanges();
+      selection.addRange(range);
+    });
+  </script>
+</body>
+</html>

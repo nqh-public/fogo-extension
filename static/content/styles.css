@@ -1,0 +1,9 @@
+/**
+ * Selecto Browser Extension - Content Script Styles
+ *
+ * @what Minimal styles for picker overlay (uses inline styles for highlighting)
+ * @why Content scripts can't directly modify page styles without CSS injection
+ */
+
+/* No additional styles needed - picker uses inline styles for element highlighting */
+/* This file exists to satisfy manifest.json content_scripts requirement */

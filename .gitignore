@@ -1,0 +1,16 @@
+# Build output
+dist/
+
+# Dependencies
+node_modules/
+
+# pnpm
+pnpm-lock.yaml
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
