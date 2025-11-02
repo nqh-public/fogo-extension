@@ -19,63 +19,50 @@ export function activate(context: vscode.ExtensionContext): void {
   previewProvider = new PreviewProvider();
 
   // Register command: Start Preview
-  const startPreviewCommand = vscode.commands.registerCommand(
-    'fogo.startPreview',
-    async () => {
-      if (!previewProvider) {
-        vscode.window.showErrorMessage('Preview provider not initialized');
-        return;
-      }
-
-      const url = await vscode.window.showInputBox({
-        prompt: 'Enter URL to preview',
-        placeHolder: 'http://localhost:3000',
-        validateInput: (value) => {
-          try {
-            new URL(value);
-            return null;
-          } catch {
-            return 'Please enter a valid URL';
-          }
-        },
-      });
-
-      if (url) {
-        previewProvider.createPanel(url);
-      }
+  const startPreviewCommand = vscode.commands.registerCommand('fogo.startPreview', async () => {
+    if (!previewProvider) {
+      vscode.window.showErrorMessage('Preview provider not initialized');
+      return;
     }
-  );
+
+    const url = await vscode.window.showInputBox({
+      prompt: 'Enter URL to preview',
+      placeHolder: 'http://localhost:3000',
+      validateInput: value => {
+        try {
+          new URL(value);
+          return null;
+        } catch {
+          return 'Please enter a valid URL';
+        }
+      },
+    });
+
+    if (url) {
+      previewProvider.createPanel(url);
+    }
+  });
 
   // Register command: Toggle Picker
-  const togglePickerCommand = vscode.commands.registerCommand(
-    'fogo.togglePicker',
-    () => {
-      if (!previewProvider) {
-        vscode.window.showErrorMessage('Preview provider not initialized');
-        return;
-      }
-      previewProvider.togglePicker();
+  const togglePickerCommand = vscode.commands.registerCommand('fogo.togglePicker', () => {
+    if (!previewProvider) {
+      vscode.window.showErrorMessage('Preview provider not initialized');
+      return;
     }
-  );
+    previewProvider.togglePicker();
+  });
 
   // Register command: Reload Preview
-  const reloadPreviewCommand = vscode.commands.registerCommand(
-    'fogo.reloadPreview',
-    () => {
-      if (!previewProvider) {
-        vscode.window.showErrorMessage('Preview provider not initialized');
-        return;
-      }
-      previewProvider.reloadPreview();
+  const reloadPreviewCommand = vscode.commands.registerCommand('fogo.reloadPreview', () => {
+    if (!previewProvider) {
+      vscode.window.showErrorMessage('Preview provider not initialized');
+      return;
     }
-  );
+    previewProvider.reloadPreview();
+  });
 
   // Add commands to subscriptions for cleanup
-  context.subscriptions.push(
-    startPreviewCommand,
-    togglePickerCommand,
-    reloadPreviewCommand
-  );
+  context.subscriptions.push(startPreviewCommand, togglePickerCommand, reloadPreviewCommand);
 }
 
 /**

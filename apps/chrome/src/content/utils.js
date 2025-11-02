@@ -17,13 +17,7 @@ const UTILITY_CLASS_REGEX = /^(flex|grid|p-\d+|m-\d+|text-|bg-|border-)/;
 export function generateSelector(element) {
   const selector = getCssSelector(element, {
     selectors: ['attribute', 'id', 'class', 'tag', 'nthchild'],
-    whitelist: [
-      /^data-testid$/,
-      /^data-qa$/,
-      /^data-cy$/,
-      /^aria-label$/,
-      /^role$/,
-    ],
+    whitelist: [/^data-testid$/, /^data-qa$/, /^data-cy$/, /^aria-label$/, /^role$/],
     blacklist: [UTILITY_CLASS_REGEX],
     maxCombinations: 5,
     maxCandidates: 10,
@@ -53,7 +47,7 @@ export function extractElementData(element) {
     fontSize: computedStyle.fontSize,
     fontFamily: computedStyle.fontFamily,
     display: computedStyle.display,
-    position: computedStyle.position
+    position: computedStyle.position,
   };
 
   // Get position and dimensions
@@ -62,7 +56,7 @@ export function extractElementData(element) {
     top: rect.top,
     left: rect.left,
     width: rect.width,
-    height: rect.height
+    height: rect.height,
   };
 
   // Extract attributes
@@ -86,6 +80,6 @@ export function extractElementData(element) {
     path: selector,
     // Include page metadata
     pageTitle: document.title,
-    url: window.location.href
+    url: window.location.href,
   };
 }

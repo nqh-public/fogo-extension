@@ -1,4 +1,4 @@
-# Selecto Browser Extension
+# Fogó Browser Extension
 
 Browser extension for picking DOM elements from any webpage and sending them to VSCode for AI-assisted development.
 
@@ -15,6 +15,7 @@ Browser extension for picking DOM elements from any webpage and sending them to 
 ### Chrome / Edge / Brave (Developer Mode)
 
 1. **Build the extension** (if needed):
+
    ```bash
    # Extension files are ready to use in apps/selecto-extension/
    # No build step required for unpacked extension
@@ -24,11 +25,11 @@ Browser extension for picking DOM elements from any webpage and sending them to 
    - Open `chrome://extensions/` (or `edge://extensions/`)
    - Enable "Developer mode" (toggle in top-right)
    - Click "Load unpacked"
-   - Select `/Users/huy/CODES/nqh/apps/selecto-extension/`
+   - Select `/path/to/fogo-extension/`
 
 3. **Verify installation**:
    - Extension icon appears in toolbar (red crosshair)
-   - Name: "Selecto DOM Picker"
+   - Name: "Fogó DOM Picker"
 
 ### Firefox (Temporary Add-on)
 
@@ -45,47 +46,52 @@ Browser extension for picking DOM elements from any webpage and sending them to 
 ### Safari (requires Xcode)
 
 1. **Convert web extension to Safari**:
+
    ```bash
    cd apps/selecto-extension/dist/safari
    xcrun safari-web-extension-converter \
-     /Users/huy/CODES/nqh/apps/selecto-extension \
-     --app-name "Selecto Picker" \
+     /path/to/fogo-extension
+     --app-name "Fogó Picker" \
      --bundle-identifier "com.nqh.selecto"
    ```
 
 2. **Open in Xcode**:
-   - Open `Selecto Picker.xcodeproj`
+   - Open `Fogó Picker.xcodeproj`
    - Build and run (⌘+R)
 
 3. **Enable in Safari**:
    - Safari → Preferences → Extensions
-   - Enable "Selecto Picker"
+   - Enable "Fogó Picker"
 
 ## Usage
 
 ### Prerequisites
 
 1. **VSCode extension must be running**:
-   - The Selecto VSCode extension starts automatically
+   - The Fogó VSCode extension starts automatically
    - Server runs on `localhost:9876` (or ports 9877-9880 as fallback)
-   - Check VSCode Output panel → "Selecto" for status
+   - Check VSCode Output panel → "Fogó" for status
 
 ### Activation Methods
 
 **Method 1: Toolbar Icon**
+
 - Click the red crosshair icon in browser toolbar
 - Click again to toggle off
 
 **Method 2: Keyboard Shortcut**
+
 - **Mac**: `Cmd+Shift+E`
 - **Windows/Linux**: `Ctrl+Shift+E`
 - Press again to toggle off
 
 **Method 3: Context Menu**
+
 - Right-click anywhere on page
-- Select "Pick Element with Selecto"
+- Select "Pick Element with Fogó"
 
 **Method 4: ESC Key**
+
 - Press `ESC` to deactivate while picker is active
 
 ### Picking Elements
@@ -120,6 +126,7 @@ Browser extension for picking DOM elements from any webpage and sending them to 
 `.btn.btn-primary[data-testid="submit-btn"]`
 
 **PAGE**
+
 - **Title**: Example Page
 - **URL**: https://example.com/form
 
@@ -159,7 +166,8 @@ Submit
 **Cause**: VSCode extension not running or ports blocked
 
 **Solutions**:
-1. Check VSCode Output → "Selecto" channel for server status
+
+1. Check VSCode Output → "Fogó" channel for server status
 2. Restart VSCode extension:
    - VSCode Command Palette (`Cmd/Ctrl+Shift+P`)
    - Run: "Developer: Reload Window"
@@ -170,6 +178,7 @@ Submit
 **Cause**: Content script not injected or JavaScript blocked
 
 **Solutions**:
+
 1. Reload the webpage (`Cmd/Ctrl+R`)
 2. Check browser console for errors
 3. Verify extension is enabled (`chrome://extensions/`)
@@ -180,6 +189,7 @@ Submit
 **Cause**: Overlapping elements or z-index issues
 
 **Solutions**:
+
 1. Zoom in on target element
 2. Use browser DevTools to inspect first
 3. Click during brief hover (outline appears)
@@ -189,6 +199,7 @@ Submit
 **Cause**: Loaded as temporary add-on
 
 **Solutions**:
+
 - Accept this limitation (load each session)
 - OR sign and self-host on AMO (advanced)
 
@@ -217,16 +228,19 @@ apps/selecto-extension/
 ### Debugging
 
 **Chrome/Edge**:
+
 - `chrome://extensions/` → Click "Inspect views: service worker"
 - View background script console
 
 **Firefox**:
+
 - `about:debugging#/runtime/this-firefox` → Click "Inspect"
 - View background script console
 
 **Content Script**:
+
 - Regular browser DevTools (`F12`)
-- Console shows `[Selecto]` prefixed messages
+- Console shows `[Fogó]` prefixed messages
 
 ## Technical Details
 
@@ -263,6 +277,7 @@ VSCode Clipboard
 ## Version History
 
 ### v0.3.0 (2025-11-01)
+
 - ✅ Browser extension with Chrome/Firefox support
 - ✅ Toolbar icon, keyboard shortcut, context menu activation
 - ✅ Toggle on/off functionality
@@ -270,6 +285,7 @@ VSCode Clipboard
 - ✅ HTTP communication with VSCode extension
 
 ### Related: VSCode Extension v0.2.0
+
 - Bookmarklet approach (predecessor)
 - HTTP server on localhost:9876
 - See `apps/selecto/CHANGELOG.md`

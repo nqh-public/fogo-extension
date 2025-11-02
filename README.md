@@ -26,12 +26,14 @@ Available as VSCode extension + Chrome extension, powered by shared TypeScript c
 ## Why Fogó?
 
 Perfect for:
+
 - **AI-assisted development**: Give Claude/ChatGPT precise element context
 - **Bug reports**: Capture exact element state and styles
 - **Documentation**: Generate technical specs from live sites
 - **Design handoff**: Extract computed styles and positioning
 
 **Output Example:**
+
 ```markdown
 ## Selected Element: Sign In
 
@@ -69,6 +71,7 @@ fogo-extension/
 Shared business logic for DOM element picking, selector generation, and markdown formatting.
 
 **Exports:**
+
 - `activatePicker()`, `deactivatePicker()` - Picker state management
 - `extractElementData()` - Extract all element info (tag, selector, styles, position)
 - `formatMarkdown()` - Convert element data to AI-friendly markdown
@@ -76,15 +79,16 @@ Shared business logic for DOM element picking, selector generation, and markdown
 - Types: `DOMElementReference`, `PickerState`, `PickerCallbacks`
 
 **Usage:**
+
 ```typescript
 import { activatePicker, formatMarkdown } from '@fogo/core';
 
 activatePicker({
-  onElementSelected: (data) => {
+  onElementSelected: data => {
     const markdown = formatMarkdown(data);
     console.log(markdown);
   },
-  onError: (error) => console.error(error),
+  onError: error => console.error(error),
 });
 ```
 
@@ -93,6 +97,7 @@ activatePicker({
 Vite plugin that auto-injects Fogó listener script into HTML during development.
 
 **Usage:**
+
 ```typescript
 // vite.config.ts
 import { fogoListener } from '@fogo/vite-plugin';
@@ -103,6 +108,7 @@ export default defineConfig({
 ```
 
 **Features:**
+
 - Dev-only (`apply: 'serve'`)
 - Zero runtime overhead
 - Works with TanStack Start, SvelteKit, Nuxt, plain Vite
@@ -112,11 +118,13 @@ export default defineConfig({
 ### VSCode Extension
 
 **Commands:**
+
 - `Fogó: Start Preview` - Open URL preview in webview
 - `Toggle Element Picker` - Activate picker in preview
 - `Reload Preview` - Reload webview content
 
 **Build:**
+
 ```bash
 cd apps/vscode
 pnpm build      # Creates fogo-0.1.0.vsix
@@ -126,12 +134,14 @@ pnpm package    # Package for VS Marketplace
 ### Chrome Extension
 
 **Features:**
+
 - Click extension icon → activate picker
 - Hover + click to select element
 - Auto-copy markdown to clipboard
 - Toast notification on success
 
 **Build:**
+
 ```bash
 cd apps/chrome
 pnpm build      # Creates dist/ folder
@@ -198,6 +208,7 @@ Report vulnerabilities to repo@ngoquochuy.com - see [SECURITY.md](SECURITY.md) f
 ## Architecture
 
 **Shared Logic (@fogo/core):**
+
 - `picker.ts` - Event handlers (mouseover, click, ESC)
 - `selector-generator.ts` - CSS selector generation with `css-selector-generator`
 - `markdown-formatter.ts` - Element data → markdown conversion
@@ -205,10 +216,12 @@ Report vulnerabilities to repo@ngoquochuy.com - see [SECURITY.md](SECURITY.md) f
 - `types.ts` - Shared TypeScript interfaces
 
 **Extension-Specific:**
+
 - **VSCode**: Webview panel, postMessage communication, picker script injection
 - **Chrome**: Content scripts, background worker, clipboard API, toast notifications
 
 **Deployment:**
+
 - **Local dev**: Workspace protocol (`"@fogo/core": "workspace:*"`)
 - **Public npm**: Version-pinned dependencies (`"@fogo/core": "^0.1.0"`)
 

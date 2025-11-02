@@ -1,4 +1,4 @@
-# Selecto Extension - Quick Start
+# Fogó Extension - Quick Start
 
 ## Installation (Chrome)
 
@@ -6,16 +6,18 @@
 2. Navigate to `chrome://extensions/`
 3. Enable "Developer mode" (toggle top-right)
 4. Click "Load unpacked"
-5. Select `/Users/huy/CODES/nqh/apps/selecto-extension/`
+5. Select `/path/to/fogo-extension/`
 
 ## Features
 
 ### ✅ Toolbar Badge Toggle
+
 - **Click toolbar icon** → Toggles extension ON/OFF
 - **Badge shows state**: Green "ON" / Gray "OFF"
 - **State persists** across browser sessions
 
 ### ✅ Toast Popup with Copy Button
+
 - **Shows automatically** after picking element
 - **Two modes**:
   - ✅ **VSCode online**: "Element data copied to clipboard!"
@@ -27,7 +29,9 @@
   - `Cmd/Ctrl+C` - Copy to clipboard
 
 ### ✅ Page Metadata in Output
+
 Markdown now includes at bottom:
+
 ```markdown
 **PAGE METADATA**
 | Property | Value |
@@ -63,9 +67,10 @@ Markdown now includes at bottom:
 **Click toolbar icon** → Badge changes to gray "OFF"
 
 **All activation methods disabled**:
+
 - ❌ Toolbar click (toggles ON/OFF instead)
-- ❌ Keyboard shortcut (`Cmd+Shift+E`) → Shows notification "Selecto Disabled"
-- ❌ Context menu → Shows notification "Selecto Disabled"
+- ❌ Keyboard shortcut (`Cmd+Shift+E`) → Shows notification "Fogó Disabled"
+- ❌ Context menu → Shows notification "Fogó Disabled"
 
 **To re-enable**: Click toolbar icon again → Badge changes to green "ON"
 
@@ -91,23 +96,27 @@ apps/selecto-extension/
 - `activeTab` - Access current tab DOM
 - `contextMenus` - Add right-click menu
 - `storage` - Persist ON/OFF state
-- `notifications` - Show "Selecto Disabled" messages
+- `notifications` - Show "Fogó Disabled" messages
 
 ## Troubleshooting
 
 ### Badge not showing
+
 - Reload extension: `chrome://extensions/` → Click reload icon
 - Or restart Chrome
 
 ### Toast popup doesn't appear
+
 - Check browser console (`F12`) for errors
 - Verify popup blocker not blocking
 
 ### "Failed to copy to clipboard"
+
 - VSCode extension not running
 - Start VSCode or use "Copy to Clipboard" button in toast
 
 ### Extension disabled after restart
+
 - Check `chrome://extensions/` - extension should auto-load
 - If missing, click "Load unpacked" again
 

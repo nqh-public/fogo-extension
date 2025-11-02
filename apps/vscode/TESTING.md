@@ -9,13 +9,14 @@ DOM element picker with clipboard export for AI workflows.
 ### Step 1: Build Extension
 
 ```bash
-cd /Users/huy/CODES/nqh/apps/fogo
+cd /path/to/fogo-extension
 pnpm install    # Ensure all dependencies present
 pnpm build      # Compile TypeScript → out/extension.js
 pnpm typecheck  # Validate no type errors
 ```
 
 Expected output:
+
 - `out/extension.js` (10.2 KB)
 - `out/extension.js.map` (16.8 KB)
 - No TypeScript errors
@@ -23,10 +24,11 @@ Expected output:
 ### Step 2: Install VSIX in VSCode
 
 ```bash
-code --install-extension /Users/huy/CODES/nqh/apps/fogo/selecto-0.1.0.vsix
+code --install-extension /path/to/fogo-extension/selecto-0.1.0.vsix
 ```
 
 Or manually:
+
 1. Open VSCode
 2. Command Palette: Cmd+Shift+P
 3. Type: "Extensions: Install from VSIX"
@@ -47,6 +49,7 @@ Or manually:
 **Setup**: Have a web app running on localhost
 
 **Steps**:
+
 1. Open VSCode with Selecto installed
 2. Command Palette: Cmd+Shift+P
 3. Type: "Selecto: Start Preview"
@@ -54,12 +57,14 @@ Or manually:
 5. Press Enter
 
 **Expected Results**:
+
 - [ ] New panel opens in second column (ViewColumn.Two)
 - [ ] Webview displays iframe showing the website preview
 - [ ] Toolbar at top with crosshair button visible
 - [ ] No console errors in VSCode
 
 **Troubleshooting**:
+
 - If blank page: Check dev server is running and URL is correct
 - If "Failed to load": Verify CORS settings, try different localhost port
 - If no panel: Check "Selecto: Start Preview" command executed (look for error toast)
@@ -71,10 +76,12 @@ Or manually:
 **Prerequisites**: Scenario 1 complete (preview panel open)
 
 **Steps**:
+
 1. With preview panel focused, click crosshair button (toolbar)
 2. Observe button appearance
 
 **Expected Results**:
+
 - [ ] Crosshair button highlights/becomes active (visual state change)
 - [ ] Picker mode activated (ready to hover elements)
 - [ ] No errors in VSCode console
@@ -86,6 +93,7 @@ Or manually:
 **Prerequisites**: Scenario 2 complete (picker active)
 
 **Steps**:
+
 1. Move mouse over a button element in preview
 2. Observe outline appearance
 3. Move mouse to different element (e.g., text heading)
@@ -93,12 +101,14 @@ Or manually:
 5. Move outside all interactive elements
 
 **Expected Results**:
+
 - [ ] Red outline (2px solid) appears around hovered element
 - [ ] Outline follows mouse as element changes
 - [ ] Body element is NOT outlined (skipped)
 - [ ] Outline disappears when hovering non-interactive areas
 
 **Visual Details**:
+
 - Color: `#ff0000` (bright red)
 - Width: `2px`
 - Style: `solid`
@@ -111,6 +121,7 @@ Or manually:
 **Prerequisites**: Scenario 3 complete (hovering elements)
 
 **Steps**:
+
 1. With picker active, hover over a button or link
 2. Click the element
 3. Check for toast notification
@@ -118,6 +129,7 @@ Or manually:
 5. Paste clipboard content (Cmd+V)
 
 **Expected Results**:
+
 - [ ] Toast notification appears: "Copied DOM reference to clipboard!"
 - [ ] Notification auto-dismisses after 3-4 seconds
 - [ ] Clipboard contains Markdown formatted text with sections:
@@ -130,6 +142,7 @@ Or manually:
   - [ ] `**INNER TEXT**: [element's text content, if any]`
 
 **Example Markdown Output**:
+
 ```markdown
 ## Selected Element: Sign Up
 
@@ -169,17 +182,20 @@ Or manually:
 **Prerequisites**: Scenario 3 or 4 complete (picker active)
 
 **Steps**:
+
 1. With preview panel focused and picker active
 2. Press ESC key
 3. Observe visual changes
 
 **Expected Results**:
+
 - [ ] Red outlines disappear immediately
 - [ ] Crosshair button returns to inactive state
 - [ ] Picker mode exits
 - [ ] No errors in console
 
 **Verification**:
+
 - Try hovering element again → No outline appears
 - Click crosshair again → Picker reactivates
 
@@ -190,11 +206,13 @@ Or manually:
 **Prerequisites**: Test on website with iframe (e.g., YouTube embed, Stripe iframe)
 
 **Steps**:
+
 1. Activate picker
 2. Try to click on iframe element
 3. Observe warning message
 
 **Expected Results**:
+
 - [ ] Warning toast appears: "Iframe content not selectable (same-origin restriction)"
 - [ ] No clipboard copy occurs
 - [ ] Picker remains active for next selection
@@ -209,12 +227,14 @@ Or manually:
 **Prerequisites**: Scenario 4 complete (clipboard working)
 
 **Steps**:
+
 1. Activate picker
 2. Click element 1 → observe toast, check clipboard
 3. Click element 2 → observe new toast, check clipboard updated
 4. Click element 3 → repeat
 
 **Expected Results**:
+
 - [ ] Picker stays active after each click
 - [ ] Each selection generates new toast
 - [ ] Clipboard updates with new element's Markdown
@@ -228,11 +248,13 @@ Or manually:
 **Prerequisites**: Preview panel open
 
 **Steps**:
+
 1. Command Palette: Cmd+Shift+P
 2. Type: "Selecto: Reload Preview"
 3. Observe preview reload
 
 **Expected Results**:
+
 - [ ] Preview iframe reloads current URL
 - [ ] Picker state resets (inactive)
 - [ ] No console errors
@@ -244,11 +266,13 @@ Or manually:
 **Prerequisites**: None
 
 **Steps**:
+
 1. Run "Selecto: Start Preview" with URL A
 2. Run "Selecto: Start Preview" again with URL B
 3. Check both panels
 
 **Expected Results**:
+
 - [ ] Only ONE preview panel exists (new request replaces old)
 - [ ] Panel shows URL B content
 - [ ] URL A is no longer accessible
@@ -260,12 +284,14 @@ Or manually:
 **Prerequisites**: Preview panel open (any valid URL)
 
 **Steps**:
+
 1. Close current preview
 2. Run "Selecto: Start Preview"
 3. Enter invalid URL: `http://invalid-domain-that-does-not-exist.local`
 4. Observe error handling
 
 **Expected Results**:
+
 - [ ] Error appears (either in preview or console)
 - [ ] Extension doesn't crash
 - [ ] User can try again with "Selecto: Start Preview"
@@ -274,14 +300,14 @@ Or manually:
 
 ## Common Issues & Fixes
 
-| Issue | Symptoms | Fix |
-|-------|----------|-----|
-| Extension not found | Missing from Extensions view after install | 1. Reload VSCode (Cmd+R)<br>2. Check Extensions: search "Selecto"<br>3. Reinstall VSIX if needed |
-| Preview shows blank | White page in iframe | 1. Verify dev server running (`npm start`)<br>2. Check URL is correct<br>3. Check CORS headers on dev server |
-| Picker button doesn't highlight | Button looks inactive after click | 1. Click preview panel first to focus it<br>2. Check browser console (DevTools) for errors<br>3. Try ESC then click button again |
-| Clipboard not copying | No toast after clicking element | 1. Check VSCode permissions (allow clipboard access)<br>2. Try element with longer text (easier to verify paste)<br>3. Check browser console for "elementSelected" message |
-| Picker stuck active | ESC key doesn't deactivate | 1. Reload preview: "Selecto: Reload Preview"<br>2. Reload VSCode window: Cmd+R<br>3. Close/reopen preview panel |
-| "Iframe content not selectable" on every element | All elements show iframe warning | 1. Check if website has multiple nested iframes<br>2. Try different website without iframes<br>3. Check browser console for origin mismatch errors |
+| Issue                                            | Symptoms                                   | Fix                                                                                                                                                                        |
+| ------------------------------------------------ | ------------------------------------------ | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Extension not found                              | Missing from Extensions view after install | 1. Reload VSCode (Cmd+R)<br>2. Check Extensions: search "Selecto"<br>3. Reinstall VSIX if needed                                                                           |
+| Preview shows blank                              | White page in iframe                       | 1. Verify dev server running (`npm start`)<br>2. Check URL is correct<br>3. Check CORS headers on dev server                                                               |
+| Picker button doesn't highlight                  | Button looks inactive after click          | 1. Click preview panel first to focus it<br>2. Check browser console (DevTools) for errors<br>3. Try ESC then click button again                                           |
+| Clipboard not copying                            | No toast after clicking element            | 1. Check VSCode permissions (allow clipboard access)<br>2. Try element with longer text (easier to verify paste)<br>3. Check browser console for "elementSelected" message |
+| Picker stuck active                              | ESC key doesn't deactivate                 | 1. Reload preview: "Selecto: Reload Preview"<br>2. Reload VSCode window: Cmd+R<br>3. Close/reopen preview panel                                                            |
+| "Iframe content not selectable" on every element | All elements show iframe warning           | 1. Check if website has multiple nested iframes<br>2. Try different website without iframes<br>3. Check browser console for origin mismatch errors                         |
 
 ---
 
@@ -305,13 +331,13 @@ All scenarios should pass before marking complete:
 
 Track these metrics for future optimization:
 
-| Metric | Current | Acceptable |
-|--------|---------|-----------|
-| Extension activation time | < 500ms | < 1000ms |
-| Build time | ~3ms | < 5000ms |
-| VSIX package size | 11KB | < 50KB |
-| Picker hover latency | < 50ms | < 200ms |
-| Copy to clipboard latency | < 100ms | < 500ms |
+| Metric                    | Current | Acceptable |
+| ------------------------- | ------- | ---------- |
+| Extension activation time | < 500ms | < 1000ms   |
+| Build time                | ~3ms    | < 5000ms   |
+| VSIX package size         | 11KB    | < 50KB     |
+| Picker hover latency      | < 50ms  | < 200ms    |
+| Copy to clipboard latency | < 100ms | < 500ms    |
 
 ---
 
@@ -336,7 +362,7 @@ After testing:
 
 ```bash
 # Remove test VSIX
-rm /Users/huy/CODES/nqh/apps/fogo/selecto-0.1.0.vsix
+rm /path/to/fogo-extension/selecto-0.1.0.vsix
 
 # Uninstall from VSCode
 code --uninstall-extension nqh.selecto

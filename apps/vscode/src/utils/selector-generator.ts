@@ -37,13 +37,7 @@ export function generateSelector(element: Element): string {
     selectors: ['attribute', 'id', 'class', 'tag', 'nthchild'],
 
     // Whitelist: Prioritize stable attributes (data-testid, data-qa, aria-*, role)
-    whitelist: [
-      /^data-testid$/,
-      /^data-qa$/,
-      /^data-cy$/,
-      /^aria-label$/,
-      /^role$/,
-    ],
+    whitelist: [/^data-testid$/, /^data-qa$/, /^data-cy$/, /^aria-label$/, /^role$/],
 
     // Blacklist: Filter out utility classes
     blacklist: [UTILITY_CLASS_REGEX],

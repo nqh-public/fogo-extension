@@ -7,9 +7,9 @@
  */
 
 import { randomBytes } from 'crypto';
-import * as vscode from 'vscode';
 import type { DOMElementReference } from '@fogo/core';
 import { formatMarkdown } from '@fogo/core';
+import * as vscode from 'vscode';
 import { NONCE_LENGTH } from './constants';
 import { generatePickerScript } from './picker-script';
 
@@ -47,7 +47,7 @@ export class PreviewProvider {
     this.panel.webview.html = this.getWebviewHtml(url);
 
     // Handle messages from webview
-    this.panel.webview.onDidReceiveMessage(async (message) => {
+    this.panel.webview.onDidReceiveMessage(async message => {
       switch (message.command) {
         case 'activatePicker':
           // Inject picker script into iframe
@@ -85,9 +85,7 @@ export class PreviewProvider {
 
         case 'pickerError':
           // Show error notification
-          vscode.window.showErrorMessage(
-            `Picker error: ${message.error || 'Unknown error'}`
-          );
+          vscode.window.showErrorMessage(`Picker error: ${message.error || 'Unknown error'}`);
           break;
 
         case 'iframeDetected':

@@ -59,9 +59,9 @@ export interface DOMElementReference {
   /** Hierarchical selector from body (max 10 levels) */
   path: string;
   /** Page title from document.title (optional, from browser extension) */
-  pageTitle?: string;
+  pageTitle?: string | undefined;
   /** Page URL from window.location.href (optional, from browser extension) */
-  url?: string;
+  url?: string | undefined;
 }
 
 /**
@@ -73,5 +73,5 @@ export interface PickerState {
   /** Currently hovered element (null if none) */
   hoveredElement: HTMLElement | null;
   /** Original outline style for restoration */
-  previousOutline?: string;
+  previousOutline?: string | undefined;
 }

@@ -14,7 +14,7 @@ import { OUTLINE_COLOR, OUTLINE_WIDTH } from '../shared/constants.js';
 const state = {
   active: false,
   hoveredElement: null,
-  previousOutline: ''
+  previousOutline: '',
 };
 
 // Activate picker
@@ -108,7 +108,7 @@ function handleClick(event) {
     // Send to background script
     chrome.runtime.sendMessage({
       action: 'elementPicked',
-      data: elementData
+      data: elementData,
     });
 
     // Deactivate picker after successful selection

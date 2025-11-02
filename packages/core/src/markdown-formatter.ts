@@ -28,8 +28,9 @@ const MAX_LABEL_LENGTH = 50;
  */
 export function formatMarkdown(data: DOMElementReference): string {
   // Extract element text or use tag name for heading
-  const elementLabel = data.innerText.trim()
-    ? `${data.innerText.substring(0, MAX_LABEL_LENGTH)}${data.innerText.length > MAX_LABEL_LENGTH ? '...' : ''}`
+  const trimmedText = data.innerText.trim();
+  const elementLabel = trimmedText
+    ? `${trimmedText.substring(0, MAX_LABEL_LENGTH)}${trimmedText.length > MAX_LABEL_LENGTH ? '...' : ''}`
     : `<${data.tagName}>`;
 
   // Build markdown sections

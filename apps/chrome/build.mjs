@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * Selecto Browser Extension - Build Script
+ * Fogó Browser Extension - Build Script
  *
  * @what esbuild bundler for Chrome extension
  * @why Bundles content script with css-selector-generator dependency
@@ -8,7 +8,6 @@
 
 import esbuild from 'esbuild';
 import fs from 'fs';
-import path from 'path';
 
 const watch = process.argv.includes('--watch');
 

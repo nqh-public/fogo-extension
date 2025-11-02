@@ -1,5 +1,5 @@
 /**
- * Selecto Browser Extension - Content Script Styles
+ * Fogó Browser Extension - Content Script Styles
  *
  * @what Minimal styles for picker overlay (uses inline styles for highlighting)
  * @why Content scripts can't directly modify page styles without CSS injection

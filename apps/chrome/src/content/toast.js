@@ -5,7 +5,7 @@
  */
 
 // Toast state
-let toasts = [];  // Array of { id, element, timeout }
+let toasts = []; // Array of { id, element, timeout }
 
 /**
  * Show a toast notification for picked element
