@@ -5,7 +5,6 @@
 
 import { describe, it, expect, beforeEach, vi } from 'vitest';
 import { generateSelector } from './selector-generator';
-import * as cssSelectorGenerator from 'css-selector-generator';
 
 // Mock css-selector-generator to avoid happy-dom compatibility issues
 vi.mock('css-selector-generator', () => ({
@@ -30,9 +29,9 @@ vi.mock('css-selector-generator', () => ({
       return `#${el.id}`;
     }
     // Find semantic class (non-utility)
-    const classes = el.className.split(' ').filter(c =>
-      c && !c.match(/^(flex|grid|p-\d+|m-\d+|text-|bg-|border-)/)
-    );
+    const classes = el.className
+      .split(' ')
+      .filter(c => c && !c.match(/^(flex|grid|p-\d+|m-\d+|text-|bg-|border-)/));
     if (classes.length > 0) {
       return `.${classes[0]}`;
     }

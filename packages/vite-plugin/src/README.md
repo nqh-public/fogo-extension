@@ -26,18 +26,21 @@ export default defineConfig({
 ```
 
 **Features**:
+
 - ✅ Dev-only (`apply: 'serve'` - not included in production builds)
 - ✅ Zero runtime overhead
 - ✅ Works with TanStack Start, Vite, SvelteKit, Nuxt
 - ✅ Automatic script injection via `transformIndexHtml`
 
 **How it works**:
+
 1. Plugin injects listener script into `<head>` during dev server startup
 2. Script listens for `injectPickerScript` message from Fogó extension
 3. When message received, executes picker script via `new Function()`
 4. Picker enables hover/click element selection with clipboard export
 
 **Compatibility**:
+
 - Vite 5.x, 6.x
 - TanStack Start (via Vinxi)
 - SvelteKit
@@ -45,6 +48,7 @@ export default defineConfig({
 - Plain Vite apps
 
 **Security**:
+
 - Only active in development mode
 - Uses `new Function()` (similar to `eval`) - safe for localhost dev
 - NO production bundle inclusion

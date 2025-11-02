@@ -33,6 +33,9 @@ export default [
         Element: 'readonly',
         HTMLElement: 'readonly',
         URL: 'readonly',
+        MouseEvent: 'readonly',
+        KeyboardEvent: 'readonly',
+        console: 'readonly',
       },
     },
     plugins: {
@@ -68,6 +71,7 @@ export default [
         __filename: 'readonly',
         module: 'readonly',
         require: 'readonly',
+        console: 'readonly',
       },
     },
     plugins: {

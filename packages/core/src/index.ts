@@ -6,20 +6,10 @@
  */
 
 // Constants
-export {
-  MAX_SELECTOR_DEPTH,
-  OUTLINE_COLOR,
-  OUTLINE_WIDTH,
-  DEBOUNCE_DELAY,
-} from './constants';
+export { MAX_SELECTOR_DEPTH, OUTLINE_COLOR, OUTLINE_WIDTH, DEBOUNCE_DELAY } from './constants';
 
 // Types
-export type {
-  Position,
-  ComputedStyles,
-  DOMElementReference,
-  PickerState,
-} from './types';
+export type { Position, ComputedStyles, DOMElementReference, PickerState } from './types';
 
 // Utilities
 export { generateSelector } from './selector-generator';
