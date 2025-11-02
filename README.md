@@ -193,7 +193,7 @@ See [CONTRIBUTING.md](CONTRIBUTING.md) for development guidelines.
 
 ## Security
 
-Report vulnerabilities to fogo@ngoquochuy.com - see [SECURITY.md](SECURITY.md) for details.
+Report vulnerabilities to repo@ngoquochuy.com - see [SECURITY.md](SECURITY.md) for details.
 
 ## Architecture
 

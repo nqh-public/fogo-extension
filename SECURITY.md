@@ -12,7 +12,7 @@
 
 Instead, please report security vulnerabilities via email to:
 
-**fogo@ngoquochuy.com**
+**repo@ngoquochuy.com**
 
 Include in your report:
 
@@ -65,7 +65,7 @@ When using Fogó:
 
 ## Security Contacts
 
-- Email: fogo@ngoquochuy.com
+- Email: repo@ngoquochuy.com
 - GitHub: [@nqh-public](https://github.com/nqh-public)
 
 Thank you for helping keep Fogó secure!

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Fogó - Browser extension for picking DOM elements and exporting as markdown. Zero data collection.",
   "type": "module",
-  "author": "Ngo Quoc Huy <fogo@ngoquochuy.com>",
+  "author": "Ngo Quoc Huy <repo@ngoquochuy.com>",
   "license": "MIT",
   "repository": {
     "type": "git",
