@@ -1,0 +1,29 @@
+{
+  "name": "@fogo/core",
+  "version": "0.1.0",
+  "description": "Fogó core - Shared DOM picker logic for VSCode and Chrome extensions",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    }
+  },
+  "files": [
+    "src"
+  ],
+  "keywords": [
+    "dom-picker",
+    "element-selector",
+    "css-selector",
+    "markdown-formatter"
+  ],
+  "author": "NQH",
+  "license": "MIT",
+  "dependencies": {
+    "css-selector-generator": "^3.6.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0"
+  }
+}
