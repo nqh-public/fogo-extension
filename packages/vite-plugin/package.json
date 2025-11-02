@@ -3,14 +3,16 @@
   "version": "0.1.0",
   "description": "Vite plugin to auto-inject Fogó listener script for TanStack Start apps",
   "type": "module",
+  "main": "./dist/fogo-listener.mjs",
   "exports": {
     ".": {
       "types": "./src/fogo-listener.ts",
-      "default": "./src/fogo-listener.ts"
+      "import": "./dist/fogo-listener.mjs"
     }
   },
   "files": [
-    "src"
+    "src",
+    "dist"
   ],
   "keywords": [
     "vite-plugin",
