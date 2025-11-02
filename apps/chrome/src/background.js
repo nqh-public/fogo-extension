@@ -29,7 +29,7 @@ chrome.runtime.onInstalled.addListener(async () => {
   chrome.contextMenus.create({
     id: 'fogo-pick-element',
     title: 'Pick Element with Fogó',
-    contexts: ['page']
+    contexts: ['page'],
   });
 });
 
@@ -57,9 +57,9 @@ chrome.action.onClicked.addListener(async () => {
     try {
       await chrome.tabs.sendMessage(tab.id, {
         action: 'extensionStateChanged',
-        enabled: extensionEnabled
+        enabled: extensionEnabled,
       });
-    } catch (error) {
+    } catch {
       // Tab doesn't have content script, ignore
     }
   }
@@ -72,8 +72,8 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
       // Show notification that extension is disabled
       chrome.notifications.create({
         type: 'basic',
-            title: 'Fogó Disabled',
-        message: 'Click the toolbar icon to enable Fogó'
+        title: 'Fogó Disabled',
+        message: 'Click the toolbar icon to enable Fogó',
       });
       return;
     }
@@ -87,14 +87,14 @@ chrome.contextMenus.onClicked.addListener(async (info, tab) => {
 });
 
 // Keyboard shortcut handler
-chrome.commands.onCommand.addListener(async (command) => {
+chrome.commands.onCommand.addListener(async command => {
   if (command === 'activate-picker') {
     if (!extensionEnabled) {
       // Show notification that extension is disabled
       chrome.notifications.create({
         type: 'basic',
-            title: 'Fogó Disabled',
-        message: 'Click the toolbar icon to enable Fogó'
+        title: 'Fogó Disabled',
+        message: 'Click the toolbar icon to enable Fogó',
       });
       return;
     }
@@ -105,12 +105,12 @@ chrome.commands.onCommand.addListener(async (command) => {
         // Check if content script is loaded
         try {
           await chrome.tabs.sendMessage(tab.id, { action: 'toggle' });
-        } catch (error) {
+        } catch {
           // Content script not loaded (restricted page or not yet injected)
           chrome.notifications.create({
             type: 'basic',
-                    title: 'Fogó Unavailable',
-            message: 'Cannot activate on this page (restricted or not loaded)'
+            title: 'Fogó Unavailable',
+            message: 'Cannot activate on this page (restricted or not loaded)',
           });
         }
       }
@@ -127,7 +127,7 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
       .then(() => {
         sendResponse({ success: true });
       })
-      .catch((error) => {
+      .catch(error => {
         console.error('[Fogó] Failed to handle element:', error);
         sendResponse({ success: false, error: error.message });
       });
@@ -144,14 +144,13 @@ async function handleElementPicked(data) {
   const markdown = formatMarkdown(data);
 
   // Send to content script to show toast and handle clipboard
-  chrome.tabs.query({ active: true, currentWindow: true }, async (tabs) => {
+  chrome.tabs.query({ active: true, currentWindow: true }, async tabs => {
     if (tabs[0]?.id) {
       await chrome.tabs.sendMessage(tabs[0].id, {
         action: 'showToast',
         markdown: markdown,
-        elementData: data
+        elementData: data,
       });
     }
   });
 }
-

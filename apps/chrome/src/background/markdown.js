@@ -15,13 +15,16 @@ export function formatMarkdown(data) {
     : '<' + data.tagName + '>';
 
   const attributeEntries = Object.entries(data.attributes);
-  const attributeRows = attributeEntries.length === 0
-    ? '| (no attributes) | |'
-    : attributeEntries.map(([key, value]) => {
-        const truncatedValue = value.length > 100 ? value.substring(0, 100) + '...' : value;
-        const escapedValue = truncatedValue.replace(/\|/g, '\\|');
-        return '| ' + key + ' | ' + escapedValue + ' |';
-      }).join('\n');
+  const attributeRows =
+    attributeEntries.length === 0
+      ? '| (no attributes) | |'
+      : attributeEntries
+          .map(([key, value]) => {
+            const truncatedValue = value.length > 100 ? value.substring(0, 100) + '...' : value;
+            const escapedValue = truncatedValue.replace(/\|/g, '\\|');
+            return '| ' + key + ' | ' + escapedValue + ' |';
+          })
+          .join('\n');
 
   return `## Selected Element: ${elementLabel}
 

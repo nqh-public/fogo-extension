@@ -1,0 +1,88 @@
+name: CI
+
+on:
+  push:
+    branches: [main, terragon/**]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    name: Test & Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Run type check
+        run: pnpm typecheck
+
+      - name: Run linter
+        run: pnpm lint
+
+      - name: Run tests
+        run: pnpm test --run
+
+      - name: Run tests with coverage
+        run: pnpm test:coverage --run
+
+      - name: Build all packages
+        run: pnpm build
+
+  build-extensions:
+    name: Build Extensions
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+
+      - name: Install dependencies
+        run: pnpm install
+
+      - name: Build Chrome extension
+        run: pnpm --filter chrome build
+
+      - name: Build VSCode extension
+        run: pnpm --filter vscode build
+
+      - name: Package VSCode extension
+        run: pnpm --filter vscode package
+
+      - name: Upload Chrome extension artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: chrome-extension
+          path: apps/chrome/dist/
+
+      - name: Upload VSCode extension artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: vscode-extension
+          path: apps/vscode/*.vsix

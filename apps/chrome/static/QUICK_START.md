@@ -11,11 +11,13 @@
 ## Features
 
 ### ✅ Toolbar Badge Toggle
+
 - **Click toolbar icon** → Toggles extension ON/OFF
 - **Badge shows state**: Green "ON" / Gray "OFF"
 - **State persists** across browser sessions
 
 ### ✅ Toast Popup with Copy Button
+
 - **Shows automatically** after picking element
 - **Two modes**:
   - ✅ **VSCode online**: "Element data copied to clipboard!"
@@ -27,7 +29,9 @@
   - `Cmd/Ctrl+C` - Copy to clipboard
 
 ### ✅ Page Metadata in Output
+
 Markdown now includes at bottom:
+
 ```markdown
 **PAGE METADATA**
 | Property | Value |
@@ -63,6 +67,7 @@ Markdown now includes at bottom:
 **Click toolbar icon** → Badge changes to gray "OFF"
 
 **All activation methods disabled**:
+
 - ❌ Toolbar click (toggles ON/OFF instead)
 - ❌ Keyboard shortcut (`Cmd+Shift+E`) → Shows notification "Selecto Disabled"
 - ❌ Context menu → Shows notification "Selecto Disabled"
@@ -96,18 +101,22 @@ apps/selecto-extension/
 ## Troubleshooting
 
 ### Badge not showing
+
 - Reload extension: `chrome://extensions/` → Click reload icon
 - Or restart Chrome
 
 ### Toast popup doesn't appear
+
 - Check browser console (`F12`) for errors
 - Verify popup blocker not blocking
 
 ### "Failed to copy to clipboard"
+
 - VSCode extension not running
 - Start VSCode or use "Copy to Clipboard" button in toast
 
 ### Extension disabled after restart
+
 - Check `chrome://extensions/` - extension should auto-load
 - If missing, click "Load unpacked" again
 

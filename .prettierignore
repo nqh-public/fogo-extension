@@ -1,0 +1,7 @@
+node_modules
+dist
+out
+*.vsix
+pnpm-lock.yaml
+coverage
+.vitest-cache
