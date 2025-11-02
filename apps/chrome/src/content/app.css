@@ -1,0 +1,137 @@
+/**
+ * Selecto Browser Extension - Content Script Styles
+ * Toast notification system using Sonner design tokens
+ */
+
+/* Toast container */
+.fogo-toast {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #000;
+  border: 1px solid hsl(0, 0%, 20%);
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.1);
+  z-index: calc(999999999 - var(--toast-index, 0));
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-size: 13px;
+  color: #fff;
+  width: 356px;
+  opacity: 0;
+  transform: translateY(calc(var(--toast-index, 0) * -72px)) scale(calc(1 - var(--toast-index, 0) * 0.05));
+  animation: sonner-fade-in 300ms ease forwards;
+  transition: transform 400ms ease, opacity 400ms ease;
+}
+
+/* Entry animation */
+@keyframes sonner-fade-in {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Exit animation */
+.fogo-toast.fogo-fade-out {
+  animation: sonner-fade-out 200ms ease forwards;
+}
+
+@keyframes sonner-fade-out {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+}
+
+/* Close button */
+.fogo-close-btn {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid hsl(0, 0%, 25%);
+  background: #000;
+  color: hsl(0, 0%, 70%);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 200ms, border-color 200ms, color 200ms;
+  padding: 0;
+}
+
+.fogo-close-btn:hover {
+  background: hsl(0, 0%, 12%);
+  border-color: hsl(0, 0%, 30%);
+  color: #fff;
+}
+
+.fogo-close-btn:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
+}
+
+/* Toast content */
+.fogo-toast-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fogo-toast-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.fogo-toast-actions {
+  display: flex;
+  gap: 8px;
+}
+
+/* Download button */
+.fogo-download-btn {
+  flex: 1;
+  padding: 0 8px;
+  height: 24px;
+  background: #fff;
+  color: #000;
+  border: none;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity 400ms, box-shadow 200ms;
+}
+
+.fogo-download-btn:hover {
+  opacity: 0.9;
+}
+
+.fogo-download-btn:focus {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.4);
+  outline: none;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion) {
+  .fogo-toast,
+  .fogo-close-btn,
+  .fogo-download-btn {
+    transition: none !important;
+    animation: none !important;
+  }
+}

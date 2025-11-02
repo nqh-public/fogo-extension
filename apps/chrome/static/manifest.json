@@ -1,0 +1,45 @@
+{
+  "manifest_version": 3,
+  "name": "Fogó DOM Picker",
+  "version": "1.0.0",
+  "description": "Pick DOM elements from any webpage and export as markdown. Zero data collection.",
+
+  "permissions": ["activeTab", "contextMenus", "storage", "notifications"],
+
+  "action": {
+    "default_icon": {
+      "16": "icons/icon-16.svg",
+      "48": "icons/icon-48.svg",
+      "128": "icons/icon-128.svg"
+    },
+    "default_title": "Pick Element (Click to activate)"
+  },
+
+  "background": {
+    "service_worker": "background.js"
+  },
+
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["content/picker.js"],
+    "css": ["content/app.css"],
+    "run_at": "document_idle"
+  }],
+
+  "commands": {
+    "activate-picker": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+E",
+        "mac": "Command+Shift+E"
+      },
+      "description": "Activate element picker"
+    }
+  },
+
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "{fogo-extension@nqh-public}",
+      "data_collection_permissions": "no"
+    }
+  }
+}
