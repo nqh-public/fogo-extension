@@ -98,9 +98,10 @@ function extractHeader(content) {
 }
 
 // Check if @date is recent (within last 30 days for modified files)
-function isDateRecent(dateString, filePath, stagedFiles) {
+// eslint-disable-next-line no-unused-vars
+function isDateRecent(dateString, filePath, _stagedFiles) {
   // Only check @date freshness for files being committed
-  if (!stagedFiles.includes(filePath)) return true;
+  if (!_stagedFiles.includes(filePath)) return true;
 
   const date = new Date(dateString);
   const now = new Date();
@@ -111,7 +112,8 @@ function isDateRecent(dateString, filePath, stagedFiles) {
 }
 
 // Validate file header
-function validateFileHeader(filePath, stagedFiles) {
+// eslint-disable-next-line no-unused-vars
+function validateFileHeader(filePath, _stagedFiles) {
   const fileType = classifyFile(filePath);
   if (!fileType) return null; // Skip unclassified files
 
