@@ -2,13 +2,8 @@
   "name": "@fogo/core",
   "version": "0.1.0",
   "description": "Fogó core - Shared DOM picker logic for VSCode and Chrome extensions",
-  "type": "module",
-  "exports": {
-    ".": {
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
-    }
-  },
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
   "files": [
     "src"
   ],
