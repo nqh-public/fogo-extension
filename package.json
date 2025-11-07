@@ -4,6 +4,9 @@
   "private": true,
   "description": "Fogó - DOM element picker for AI workflows (VSCode + Chrome extensions)",
   "type": "module",
+  "engines": {
+    "bun": ">=1.2.0"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/nqh-public/fogo-extension.git"
