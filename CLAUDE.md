@@ -55,10 +55,10 @@ apps/
 
 **Run checks**:
 ```bash
-pnpm lint        # ESLint
-pnpm format      # Prettier
-pnpm typecheck   # TypeScript
-pnpm test        # Vitest
+bun lint        # ESLint
+bun format      # Prettier
+bun typecheck   # TypeScript
+bun test        # Vitest
 ```
 
 ---
@@ -67,24 +67,24 @@ pnpm test        # Vitest
 
 **Setup**:
 ```bash
-pnpm install
-pnpm build       # Build all packages + extensions
+bun install
+bun build       # Build all packages + extensions
 ```
 
 **Testing**:
 ```bash
-pnpm test              # Run tests
-pnpm test:coverage     # With coverage report
-pnpm test:ui           # Visual test UI
+bun test              # Run tests
+bun test:coverage     # With coverage report
+bun test:ui           # Visual test UI
 ```
 
 **Build for distribution**:
 ```bash
 # VSCode extension
-cd apps/vscode && pnpm build
+cd apps/vscode && bun build
 
 # Chrome extension
-cd apps/chrome && pnpm build
+cd apps/chrome && bun build
 ```
 
 ---

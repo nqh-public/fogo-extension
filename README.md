@@ -127,8 +127,8 @@ export default defineConfig({
 
 ```bash
 cd apps/vscode
-pnpm build      # Creates fogo-0.1.0.vsix
-pnpm package    # Package for VS Marketplace
+bun build      # Creates fogo-0.1.0.vsix
+bun package    # Package for VS Marketplace
 ```
 
 ### Chrome Extension
@@ -144,7 +144,7 @@ pnpm package    # Package for VS Marketplace
 
 ```bash
 cd apps/chrome
-pnpm build      # Creates dist/ folder
+bun build      # Creates dist/ folder
 ```
 
 ## Development
@@ -155,19 +155,19 @@ git clone https://github.com/nqh-public/fogo-extension.git
 cd fogo-extension
 
 # Install dependencies
-pnpm install
+bun install
 
 # Build VSCode extension
 cd apps/vscode
-pnpm build      # Creates .vsix file
+bun build      # Creates .vsix file
 
 # Build Chrome extension
 cd apps/chrome
-pnpm build      # Creates dist/ folder
+bun build      # Creates dist/ folder
 
 # Build all packages
 cd ../..
-pnpm build      # Builds everything
+bun build      # Builds everything
 ```
 
 ## Publishing
@@ -193,7 +193,7 @@ vsce publish
 
 ### Chrome Extension
 
-1. Build: `cd apps/chrome && pnpm build`
+1. Build: `cd apps/chrome && bun build`
 2. Upload `dist/` to Chrome Web Store
 3. Submit for review
 

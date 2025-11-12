@@ -59,5 +59,5 @@ No build step required - apps import TypeScript source directly.
 
 ```bash
 # After adding new plugin
-pnpm registry:update
+bun registry:update
 ```

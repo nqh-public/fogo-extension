@@ -30,14 +30,14 @@ Be respectful, inclusive, and professional in all interactions.
 
 1. **Fork the repository**
 2. **Create a feature branch**: `git checkout -b feature/your-feature-name`
-3. **Install dependencies**: `pnpm install`
+3. **Install dependencies**: `bun install`
 4. **Make your changes**:
    - Follow existing code style (TypeScript, ESLint)
    - Add tests if applicable
    - Update documentation
 5. **Test your changes**:
-   - VSCode extension: `cd apps/vscode && pnpm build`
-   - Chrome extension: `cd apps/chrome && pnpm build`
+   - VSCode extension: `cd apps/vscode && bun build`
+   - Chrome extension: `cd apps/chrome && bun build`
    - Core package: Verify types compile
 6. **Commit with clear messages**:
    - Use conventional commits: `feat:`, `fix:`, `docs:`, `refactor:`
@@ -56,14 +56,14 @@ git clone https://github.com/nqh-public/fogo-extension.git
 cd fogo-extension
 
 # Install dependencies
-pnpm install
+bun install
 
 # Build packages
-pnpm build
+bun build
 
 # Development workflow
-cd apps/vscode && pnpm dev     # VSCode extension
-cd apps/chrome && pnpm dev     # Chrome extension
+cd apps/vscode && bun dev     # VSCode extension
+cd apps/chrome && bun dev     # Chrome extension
 ```
 
 ### Code Style

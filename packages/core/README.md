@@ -13,7 +13,7 @@ npm install @fogo/core
 ```
 
 ```bash
-pnpm add @fogo/core
+bun add @fogo/core
 ```
 
 ```bash

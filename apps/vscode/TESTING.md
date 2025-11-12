@@ -10,9 +10,9 @@ DOM element picker with clipboard export for AI workflows.
 
 ```bash
 cd /path/to/fogo-extension
-pnpm install    # Ensure all dependencies present
-pnpm build      # Compile TypeScript → out/extension.js
-pnpm typecheck  # Validate no type errors
+bun install    # Ensure all dependencies present
+bun build      # Compile TypeScript → out/extension.js
+bun typecheck  # Validate no type errors
 ```
 
 Expected output:
